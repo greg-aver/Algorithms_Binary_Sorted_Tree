@@ -19,35 +19,7 @@ public class BST<T> {
         return recursiveTreeCrawlerNodeByKey(getRoot(), key);
     }
 
-/*    private BSTFind<T> recursiveTreeCrawlerNodeByKey(BSTNode<T> rootNode, int key) {
-        BSTFind<T> node = null;
-        //The node found
-        if (rootNode.getKey() == key) {
-            node = new BSTFind<>(rootNode, true);
-        } else {
-            //The node not found
-            //Checking which branch to go on
-
-            boolean addToLeft = false;
-            BSTNode<T> child;
-            //Choose which branch to go
-            if (key > rootNode.getKey()) {
-                child = rootNode.getRightChild();
-            } else {
-                child = rootNode.getLeftChild();
-                addToLeft = true;
-            }
-            if (child != null) {
-                //Follow the right branch
-                node = recursiveTreeCrawlerNodeByKey(child, key);
-            } else {
-                //The node is not found. Needs to be added
-                node = new BSTFind<>(rootNode, false, addToLeft);
-            }
-        }
-        return node;
-    }*/
-        private BSTFind<T> recursiveTreeCrawlerNodeByKey(BSTNode<T> rootNode, int key) {
+    private BSTFind<T> recursiveTreeCrawlerNodeByKey(BSTNode<T> rootNode, int key) {
         BSTFind<T> node = null;
         //The node found
         if (rootNode.getKey() == key) {
@@ -255,40 +227,7 @@ public class BST<T> {
             nodeDelete.getLeftChild().setParent(nodeMinKeyRightBranch);
             nodeDelete.getRightChild().setParent(nodeMinKeyRightBranch);
         }
-    }/*
-    private void delete2Children(BSTNode<T> nodeDelete) {
-        //Find minimum key in right branch
-        BSTNode<T> nodeMinKeyRightBranch = FinMinMax(nodeDelete.getRightChild(), false);
-        //The leaf has a right child. Putting the right child instead of the leaf
-        BSTNode<T> nodeRightChild = nodeMinKeyRightBranch.getRightChild();
-        if (nodeRightChild != null) {
-            nodeMinKeyRightBranch.getParent().setLeftChild(nodeRightChild);
-            nodeRightChild.setParent(nodeMinKeyRightBranch.getParent());
-            nodeMinKeyRightBranch.setRightChild(null);
-        }
-        //We put the leaf instead of the node to be remove
-        if (nodeDelete.getParent() == null) {
-            //NodeDelete is the root
-            setRoot(nodeMinKeyRightBranch);
-        } else {
-            //NodeDelete isn't the root and has a parent
-            //Determine the right or left child is the node to be deleted
-            if (nodeDelete.getParent().getRightChild() == nodeDelete) {
-                //The right child
-                nodeDelete.getParent().setRightChild(nodeMinKeyRightBranch);
-            } else {
-                //The left child
-                nodeDelete.getParent().setLeftChild(nodeMinKeyRightBranch);
-            }
-            //Set a parent
-            nodeMinKeyRightBranch.setParent(nodeDelete.getParent());
-            nodeDelete.setParent(null);
-
-            nodeMinKeyRightBranch.setLeftChild(nodeDelete.getLeftChild());
-            nodeMinKeyRightBranch.setRightChild(nodeDelete.getRightChild());
-        }
-    }*/
-
+    }
     public boolean DeleteNodeByKey(int key) {
         // удаляем узел по ключу
         BSTFind<T> nodeFind = FindNodeByKey(key);
